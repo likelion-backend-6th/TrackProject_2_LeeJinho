@@ -9,8 +9,8 @@ on:
           - tee2/**
 
 env:
-    IMAGE: ${{ vars.NCR_REGISTRY }}/tee2-app
-    IMAGE_TAG: ${{ vars.NCR_REGISTRY }}/tee2-app:latest
+    IMAGE: ${{ vars.NCR_REGISTRY }}/tee2
+    IMAGE_TAG: ${{ vars.NCR_REGISTRY }}/tee2:latest
 
 jobs:
     build-and-push:
@@ -22,7 +22,7 @@ jobs:
             - name: test
               run: |
                 docker-compose up --build -d
-                docker-compose run tee2-app python manage.py test
+                docker-compose run tee2 python manage.py test
             - name: Set up Docker buildx
               uses: docker/setup-buildx-action@v2
             - name: Login to NCR
@@ -39,7 +39,7 @@ jobs:
             - name: Build and Push
               uses: docker/build-push-action@v4
               with:
-                context: lion_app
+                context: tee2
                 tags: ${{ env.IMAGE_TAG }},"${{ env.IMAGE }}:${{ steps.timestamp.outputs.timestamp }}"
                 push: true
 
@@ -61,11 +61,11 @@ jobs:
                     -u ${{ secrets.NCR_ACCESS_KEY_ID }} \
                     -p ${{ secrets.NCR_SECRET_KEY }}
                     docker pull ${{ env.IMAGE_TAG }}
-                    docker stop tee2-app && docker rm tee2-app
+                    docker stop tee2 && docker rm tee2
                     docker run -p 8000:8000 -d \
-                    --name tee2-app \
+                    --name tee2 \
                     -v ~/.aws:/root/.aws:ro \
                     --env-file .env \
-                    lion-cr.kr.ncr.ntruss.com/tee2-app:latest
+                    lion-cr.kr.ncr.ntruss.com/tee2:latest
             - name: echo IMAGE_TAG
               run: echo $IMAGE_TAG

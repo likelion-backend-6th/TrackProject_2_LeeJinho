@@ -212,3 +212,4 @@ bash_profile
 infra/aws/users.txt
 scripts/set_be_server.sh
 infra/staging/.db_envs
+scripts/init_script.sh

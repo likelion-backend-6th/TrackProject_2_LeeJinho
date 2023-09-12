@@ -1,11 +1,12 @@
 name: CD using Docker Image
 
 on:
+    pull_request:
     push:
         branches:
           - 'master'
         paths:
-          - .github/workflows/CD.yml
+          - .github/workflows/CICD.yml
           - tee2/**
 
 env:

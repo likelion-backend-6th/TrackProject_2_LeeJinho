@@ -1,7 +1,7 @@
 # git clone
 echo "start to clone"
-git clone https://github.com/bainaryho/DRF_SNS.git tee2
-cd tee2
+git clone https://github.com/bainaryho/DRF_SNS.git DRF_SNS
+cd DRF_SNS
 
 # venv 설치
 echo "start to install venv"

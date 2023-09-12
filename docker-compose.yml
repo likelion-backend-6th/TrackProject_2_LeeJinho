@@ -18,10 +18,10 @@ services:
     command:
       - "/start"
     env_file:
-      - ./.envs/local/django
-      - ./.envs/local/db
-      - ./.envs/local/server
-      - ./.envs/prod/ncp
+      - .envs/local/django
+      - .envs/local/db
+      - .envs/local/server
+      - .envs/prod/ncp
     environment:
       - AWS_SECRET_NAME=like/lion/lecture
 
@@ -39,12 +39,12 @@ services:
     volumes:
       - staticfiles:/var/www/html/static   # 변경된 부분: 로컬 경로 대신 named volume 사용
     env_file:
-      - ./.envs/local/server
+      - .envs/local/server
 
   db:
     image: postgres:15
     env_file:
-      - ./.envs/local/db
+      - .envs/local/db
     ports:
       - 5432:5432
     volumes:

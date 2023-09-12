@@ -6,7 +6,7 @@ services:
       - db
     container_name: tee2-dc
     build:
-      context: tee2
+      context: .
       dockerfile: Dockerfile
     image: tee2
     ports:

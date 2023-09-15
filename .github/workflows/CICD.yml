@@ -37,7 +37,7 @@ jobs:
             - name: build-and-push
               uses: docker/build-push-action@v4
               with:
-                context: tee2
+                context: .
                 tags: ${{ env.IMAGE_TAG }},"${{ env.IMAGE }}:${{ steps.timestamp.outputs.timestamp }}"
                 push: true
 

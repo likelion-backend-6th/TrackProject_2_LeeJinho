@@ -95,7 +95,7 @@ DATABASES = {
         "HOST": os.getenv("DB_HOST", "db"),
         "PORT": "5432",  # PostgreSQL 포트
         "OPTIONS": {
-            "options": "-c search_path=twitter,public",
+            "options": "-c search_path=tee2,public",
         },
     }
 }
@@ -143,8 +143,7 @@ STATIC_ROOT = "/var/www/html/static"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# 유저모델 사용
-AUTH_USER_MODEL = "user.User"
+AUTH_USER_MODEL = "auth.User"
 
 NCP_ACCESS_KEY = os.getenv("NCP_ACCESS_KEY", "")
 NCP_SECRET_KEY = os.getenv("NCP_SECRET_KEY", "")

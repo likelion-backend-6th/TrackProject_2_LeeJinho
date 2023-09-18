@@ -1,13 +1,14 @@
-DjangoApp 배포 : be-lb-staging-19609149-0dfe808d8688.kr.lb.naverncp.com
-라이브러리 버전
-Django 4.2.3
-postgresql 13
-gunicorn 21.2.0
-psycopg2-binary 2.9.7
-djangorestframework 3.14.0
-drf-spectacular 0.26.4
-python-dotenv 0.19.1
+DjangoApp 배포 : be-lb-staging-19609149-0dfe808d8688.kr.lb.naverncp.com  
 
+라이브러리 버전  
+Django 4.2.3  
+postgresql 13  
+gunicorn 21.2.0  
+psycopg2-binary 2.9.7  
+djangorestframework 3.14.0  
+drf-spectacular 0.26.4  
+python-dotenv 0.19.1  
+  
 1. 백엔드 DB 설계
 Django 모델을 사용하여 게시글과 유저를 생성합니다.
 Django의 ORM을 사용하여 모델 간의 관계를 정의하고 데이터베이스를 마이그레이션합니다.

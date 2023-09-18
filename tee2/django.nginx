@@ -8,7 +8,7 @@ server {
 		proxy_set_header X-Real-IP $remote_addr;
 	}
 
-	location /static/ {
-		alias /var/www/html/static/;
-	}
+    location /static/ {
+        alias /var/www/html/static/;
+    }
 }

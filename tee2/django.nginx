@@ -1,3 +1,13 @@
+http {
+    types {
+        text/html html htm;
+        text/css css;
+        text/javascript js;
+        image/png png;
+        image/jpeg jpg jpeg;
+    }
+}
+
 server {
     listen 80;
     server_name localhost $LOCAL_IP;

@@ -64,4 +64,5 @@ jobs:
                     sudo docker stop tee2 && docker rm tee2
                     sudo docker run -p 8000:8000 -d --name tee2 \
                     -v ~/.aws:/root/.aws:ro \
+                    --env-file .env \
                     ${{ secrets.NCR_REGISTRY }}/tee2:latest

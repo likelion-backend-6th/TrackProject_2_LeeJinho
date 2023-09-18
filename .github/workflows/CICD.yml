@@ -4,7 +4,7 @@ on:
     pull_request:
     push:
         branches:
-          - 'master'
+          - 'master' #실제 CI/CD는 개인레파지토리에서 진행 https://github.com/bainaryho/DRF_SNS
         paths:
           - .github/workflows/CICD.yml
           - tee2/**

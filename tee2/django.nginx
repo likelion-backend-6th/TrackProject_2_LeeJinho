@@ -9,7 +9,6 @@ server {
 	}
 
 	location /static/ {
-		alias /app/staticfiles/;
-		autoindex off;
+		alias /var/www/html/static/;
 	}
 }

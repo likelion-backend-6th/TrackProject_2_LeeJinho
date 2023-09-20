@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  tee2:
+    depends_on:
+      - db
+    container_name: tee2-dc
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tee2
+    ports:
+      - 8000:8000
+    volumes:
+      - ~/.aws:/root/.aws:ro
+      - ./tee2:/app
+      - staticfiles:/var/www/html/static   # 변경된 부분: 로컬 경로 대신 named volume 사용
+    command:
+      - "/start"
+    env_file:
+      - ./.envs/local/django
+      - ./.envs/local/db
+      - ./.envs/local/server
+      - ./.envs/prod/ncp
+    environment:
+      - AWS_SECRET_NAME=like/lion/lecture
+
+  nginx:
+    restart: always
+    depends_on:
+      - tee2
+    container_name: tee2-nginx-dc
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx_ubt
+    image: tee2-nginx
+    ports:
+      - "8888:80"
+    volumes:
+      - staticfiles:/var/www/html/static   # 변경된 부분: 로컬 경로 대신 named volume 사용
+    env_file:
+      - ./.envs/local/server
+
+  db:
+    image: postgres:15
+    env_file:
+      - ./.envs/local/db
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  staticfiles:  # named volume 정의
+  postgres_data:
